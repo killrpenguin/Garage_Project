@@ -16,19 +16,20 @@ def title_info(auto_info=None) -> dict:
             print(auto_info[i])
     return auto_info
 
-def create_garage(list=None) -> object:
-    if list is None:
+def create_garage(title_stuff=None) -> object:
+    if title_stuff is None:
         title_info()
     else:
-        car_house = garage(["fname"], ["lname"])
-    return car_house
+        garage(["fname"], ["lname"])
+    return
 
 
 
 def garage_project():
-    # while loop will go here.
-    pass
+    title = title_info()
+    print(title['fname'] + " " + title['lname'])
+    a = create_garage(title)
 
 
-tmp = title_info()
-title_info(tmp)
+g_rage = create_garage()
+

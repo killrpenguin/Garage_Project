@@ -9,7 +9,7 @@ Your program will use the inheritance diagram below in order to
  """
 
 class garage:
-    def __init__(self, owner_fname, owner_lname):
+    def __init__(self, owner_fname, owner_lname) -> object:
         self.owner_fname = owner_fname
         self.owner_lname = owner_lname
         self.owner = str(owner_fname) + " " + str(owner_lname)
