@@ -1,35 +1,40 @@
 from objects import garage, car, truck
 
 
-def title_info(auto_info=None) -> dict:
-    if auto_info is None:
-        fname = str(input("Enter Title Owners First Name: "))
-        lname = str(input("Enter Title Owners Last Name: "))
-        vname = str(input("What is the Vehicles Name?: "))
-        seats = int(input("How many seats will it have?: "))
-        capacity = str(input("Storage capacity in square feet?: "))
-        auto_info = dict(fname=fname, lname=lname,
-                         vname=vname, seats=seats, capacity=capacity)
+def get_garage_info(garage_owner=None) -> dict:
+    if garage_owner is None:
+        fname = str(input("Enter Garage Owners First Name: "))
+        lname = str(input("Enter Garage Owners Last Name: "))
+        address = str(input("Enter the address of the garage: "))
+        phone_num = str(input("Enter the Phone number of the garage: "))
+        garage_owner = dict(fname=fname, lname=lname,
+                            address=address, phone_num=phone_num)
     else:
-        for i in auto_info:
-            question = input("Current value: " + str(auto_info[i]) + " Change Value? (Y/N): ").upper()
+        for i in garage_owner:
+            question = input("Current value: " + str(garage_owner[i]) + " Change Value? (Y/N): ").upper()
             if question == "Y":
                 new_value = input("New Value: ")
-                auto_info.update({i: new_value})
-    return auto_info
+                garage_owner.update({i: new_value})
+    return garage_owner
 
 
-def create_garage(title_stuff=None) -> object:
-    if title_stuff is None:
-        title = title_info()
-        obj = garage(title['fname'], title['lname'])
+def create_garage(garage_stuff=None) -> object:
+    if garage_stuff is None:
+        title_details = get_garage_info()
+        obj = garage(title_details['fname'], title_details['lname'],
+                     title_details['address'], title_details['phone_num'])
     else:
-        obj = garage(title_stuff['fname'], title_stuff['lname'])
+        obj = garage(garage_stuff['fname'], garage_stuff['lname'],
+                     garage_stuff['address'], garage_stuff['phone_num'])
     return obj
 
 
 def garage_project():
-    title = title_info()
-    garage_obj = create_garage(title)
+    garage_details = get_garage_info()
+    garage_obj = create_garage(garage_details)
     print(garage_obj.owner)
+    print(garage_obj.address)
+    print(garage_obj.phone_num)
 
+
+garage_project()
