@@ -28,7 +28,6 @@ def create_garage(title_stuff=None) -> object:
     return obj
 
 
-
 def garage_project():
     title = title_info()
     garage_obj = create_garage(title)
