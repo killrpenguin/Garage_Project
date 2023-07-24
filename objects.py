@@ -7,7 +7,9 @@ Your program will use the inheritance diagram below in order to
  adding a car or picking up track and define the vehicles attributes.
  The program will use user input to define the vehicles attributes.
  """
-class garage:
+
+
+class garage(object):
     def __init__(self, owner_fname, owner_lname, address, phone_num):
         self.owner_fname = owner_fname
         self.owner_lname = owner_lname
@@ -16,19 +18,19 @@ class garage:
         self.owner = str(owner_fname) + " " + str(owner_lname)
         self.storage = []
 
-    def park_vehicle(self, vehicle):
+    def add_vehicle(self, vehicle):
         self.storage.append(vehicle)
 
-    def sell_vehicle(self, vehicle):
+    def remove_vehicle(self, vehicle):
         self.storage.remove(vehicle)
 
-    def check_garage(self):
+    def disp_inventory(self):
         for i in self.storage:
-            print(i.owner + " " + i.v_name)
+            print(i.owner + " " + i.make)
 
 
 class car(garage):
-    def __init__(self, owner_fname, owner_lname, make, model, seats, milage, vin):
+    def __init__(self, owner_fname, owner_lname, address, phone_num, make, model, seats, milage, vin):
         super().__init__(owner_fname, owner_lname, address, phone_num)
         self.make = make
         self.model = model
@@ -38,7 +40,7 @@ class car(garage):
 
 
 class truck(garage):
-    def __init__(self, owner_fname, owner_lname, make, model, seats, milage, vin):
+    def __init__(self, owner_fname, owner_lname, address, phone_num, make, model, seats, milage, vin):
         super().__init__(owner_fname, owner_lname, address, phone_num)
         self.make = make
         self.model = model

@@ -29,12 +29,37 @@ def create_garage(garage_stuff=None) -> object:
     return obj
 
 
+def vehicle_info() -> dict:
+    vehicle_type = str(input("Is this a Car or Truck?: ")).upper()
+    make = str(input("Enter the make of the vehicle "))
+    model = str(input("Enter the model of the vehicle: "))
+    seats = int(input("How many seats in the vehicle: "))
+    milage = float(input("How many miles does it have?: "))
+    vin = str(input("What is the vin number of the vehicle?: "))
+    vehicle = dict(vehicle_type=vehicle_type, make=make, model=model,
+                   seats=seats, milage=milage, vin=vin)
+    return vehicle
+
+
+def get_vehicle_obj(vehicle_details, garage_details) -> object:
+    if vehicle_details['vehicle_type'] == "CAR":
+        obj = car(garage_details['fname'], garage_details['lname'], garage_details['address'],
+                  garage_details['phone_num'], vehicle_details['make'], vehicle_details['model'],
+                  vehicle_details['seats'], vehicle_details['milage'], vehicle_details['vin'])
+    elif vehicle_details['vehicle_type'] == "TRUCK":
+        obj = truck(garage_details['fname'], garage_details['lname'], garage_details['address'],
+                  garage_details['phone_num'], vehicle_details['make'], vehicle_details['model'],
+                  vehicle_details['seats'], vehicle_details['milage'], vehicle_details['vin'])
+    return obj
+
+
 def garage_project():
     garage_details = get_garage_info()
     garage_obj = create_garage(garage_details)
-    print(garage_obj.owner)
-    print(garage_obj.address)
-    print(garage_obj.phone_num)
+    auto = vehicle_info()
+    vehicle_obj = get_vehicle_obj(auto, garage_details)
+    garage_obj.add_vehicle(vehicle_obj)
+    garage_obj.disp_inventory()
 
 
 garage_project()
