@@ -7,29 +7,30 @@ def title_info(auto_info=None) -> dict:
         lname = str(input("Enter Title Owners Last Name: "))
         vname = str(input("What is the Vehicles Name?: "))
         seats = int(input("How many seats will it have?: "))
-        capacity = input("Storage capacity in square feet?: ")
+        capacity = str(input("Storage capacity in square feet?: "))
         auto_info = dict(fname=fname, lname=lname,
-                         vname=vname, seats=seats,
-                         capacity=capacity)
+                         vname=vname, seats=seats, capacity=capacity)
     else:
         for i in auto_info:
-            print(auto_info[i])
+            question = input("Current value: " + str(auto_info[i]) + " Change Value? (Y/N): ").upper()
+            if question == "Y":
+                new_value = input("New Value: ")
+                auto_info.update({i: new_value})
     return auto_info
+
 
 def create_garage(title_stuff=None) -> object:
     if title_stuff is None:
-        title_info()
+        title = title_info()
+        obj = garage(title['fname'], title['lname'])
     else:
-        garage(["fname"], ["lname"])
-    return
+        obj = garage(title_stuff['fname'], title_stuff['lname'])
+    return obj
 
 
 
 def garage_project():
     title = title_info()
-    print(title['fname'] + " " + title['lname'])
-    a = create_garage(title)
-
-
-g_rage = create_garage()
+    garage_obj = create_garage(title)
+    print(garage_obj.owner)
 
