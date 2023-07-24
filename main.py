@@ -56,10 +56,6 @@ def get_vehicle_obj(vehicle_details, garage_details) -> object:
 def garage_project():
     garage_details = get_garage_info()
     garage_obj = create_garage(garage_details)
-    auto = vehicle_info()
-    vehicle_obj = get_vehicle_obj(auto, garage_details)
-    garage_obj.add_vehicle(vehicle_obj)
-    garage_obj.disp_inventory()
 
 
-garage_project()
+
