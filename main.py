@@ -59,7 +59,8 @@ def menu() -> str:
     2. Remove Vehicle
     3. List Owned Vehicles
     4. Edit Garage Information
-    5. Exit
+    5. Save Garage Information
+    6. Exit
     """))
     return user_input
 
@@ -74,15 +75,17 @@ def garage_project():
             vehicle_info = vehicle_info()
             vehicle = get_vehicle_obj(vehicle_info, garage_details)
             garage_obj.add_vehicle(vehicle)
-        if user_action == "2":
+        elif user_action == "2":
             pass
-        if user_action == "3":
+        elif user_action == "3":
             garage_obj.disp_inventory()
-        if user_action == "4":
+        elif user_action == "4":
             # This currently clears inventory. Find a way to copy old object list to new object list.
             garage_details = get_garage_info(garage_details)
             garage_obj = create_garage(garage_details)
         elif user_action == "5":
+            pass
+        elif user_action == "6":
             break
 
 
